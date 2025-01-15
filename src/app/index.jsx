@@ -1,9 +1,13 @@
 import { Text, View, Image, ScrollView } from "react-native";
-import { Link } from "expo-router";
+import { Link, router, Redirect } from "expo-router";
+import React from "react";
+import 'react-native-url-polyfill'
+
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { images } from "../../constants";
-import { CustumButtom } from "../../components/CustumButtom";
+import { images } from "../constants/";
+import CustomButton from "../components/CustomButton";
+import { StatusBar } from "expo-status-bar";
 
 export default function Index() {
   return (
@@ -45,9 +49,15 @@ export default function Index() {
             Exploration with Aora
           </Text>
 
-          <CustumButtom />
+          <CustomButton
+            title="Continue with email"
+            hadlePress={() => router.push('/sign-in')}
+            containerStyles="w-full mt-7"
+          />
         </View>
       </ScrollView>
+      <StatusBar backgroundColor="#161622" style="light"/>
     </SafeAreaView>
   );
 }
+ 
